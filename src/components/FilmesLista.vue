@@ -10,7 +10,9 @@
         <FilmesListaIten 
         v-for="filme in filmes" 
         :key="filme.id" 
-        :filme="filme"/>
+        :filme="filme"
+        :class="aplicarClasseActive(filme)"
+        @selecionarFilme="filmeSelecionado = $event"/>
       </ul>
     </div>
 
@@ -34,13 +36,21 @@ export default {
     FilmesListaIten,
     FilmesListaItenInfo
   },
-  data: function() {
+  data() {
     return {
       filmes: [
         {autor:'Stan',ano: 2018,titulo: 'Harry Potter', id: 1},
         {autor:'Stan',ano: 2018,titulo: 'As Aventuras de Tintin', id: 2},
         {autor:'Stan',ano: 2018,titulo: 'Magnolia', id: 3}
-      ]
+      ],
+      filmeSelecionado: undefined
+    }    
+  },
+  methods: {
+      aplicarClasseActive(filmeIterado) {
+        return {
+          active: this.filmeSelecionado && this.filmeSelecionado.id === filmeIterado.id,
+      }
     }
   }
 }
