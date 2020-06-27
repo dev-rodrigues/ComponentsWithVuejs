@@ -11,6 +11,7 @@
         <p v-else>Nenhum Filme Selecionado</p>        
         <button 
             v-if="filme"
+            @click="limpar"
             class="btn btn-warning w-100 p-3">Limpar</button>
     </div>    
 </template>
@@ -26,6 +27,13 @@ export default {
     data() {
         return {
            filme: undefined 
+        }
+    },
+    methods: {
+        limpar() {
+            // this.$emit('selecionarFilme', this.filme)
+            // eventBus.$emit('selecionarFilme', this.filme);
+            eventBus.selecionarFilme(null);
         }
     },
     created() {
