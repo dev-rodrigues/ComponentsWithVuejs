@@ -1,3 +1,3 @@
 <template>
-    <app-contador></app-contador>
+    <div></div>
 </template>
