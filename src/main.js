@@ -1,30 +1,10 @@
-import Vue from 'vue'
+import Vue from 'vue';
+import App from './App.vue';
+import AppContador from './AppContador.vue';
 
-// const data = {
-//   titulo: 'Curso Coppetec',
-//   contador: 0,
-// }
 
-Vue.component('cptec-helloword', {
-  data: function() {
-    return {
-      titulo: 'Curso Coppetec',
-      contador: 0,
-    };
-  },
-  methods: {
-    incrementar: function() {
-      this.contador++;
-    }
-  },
-  template: `
-    <div>
-      <h1> {{titulo}} </h1>
-      <button @click="incrementar">Clicado {{contador}} vezes</button>
-    </div>    
-  `
-});
+Vue.component('app-contador', AppContador)
 
 new Vue({
-  el: '#app'
-});
+  render: h => h(App)
+}).$mount('#app');
