@@ -8,14 +8,30 @@
                 <button class="btn btn-danger float-right">Editar</button>
             </div>
         </div>
-        <p v-else>Nenhum Filme Selecionado</p>
-    </div>
+        <p v-else>Nenhum Filme Selecionado</p>        
+        <button 
+            v-if="filme"
+            class="btn btn-warning w-100 p-3">Limpar</button>
+    </div>    
 </template>
 
 <script>
+
+import { eventBus } from './../main';
+
 export default {
-    props: {
-        filme: Object
+    // props: {
+    //     filme: Object
+    // }
+    data() {
+        return {
+           filme: undefined 
+        }
+    },
+    created() {
+        eventBus.$on('selecionarFilme', (filmeSelecionado) => {
+            this.filme = filmeSelecionado;
+        });
     }
 }
 </script>
