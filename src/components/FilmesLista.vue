@@ -19,7 +19,7 @@
     <!-- coluna 2 -->
     <div class="col-4">
 
-      <FilmesListaItenInfo/>
+      <FilmesListaItenInfo :filme="filmeSelecionado"/>
 
     </div>
 

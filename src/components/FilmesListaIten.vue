@@ -17,8 +17,7 @@ export default {
         }
     },
     methods: {
-        selecionar(event) {
-            console.log(event);
+        selecionar() {
             this.$emit('selecionarFilme', this.filme)
         }
     }
