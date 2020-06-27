@@ -8,9 +8,9 @@
 
       <ul class="list-group list-group-flush">
         <FilmesListaIten 
-          v-for="(filme, index) in filmes" 
-          :key="index" 
-          :filmeTitulo="filme"/>      
+          v-for="filme in filmes" 
+          :key="filme.id" 
+          v-bind="filme"/>      
       </ul>
     </div>
 
@@ -36,7 +36,11 @@ export default {
   },
   data: function() {
     return {
-      filmes: ['Harry Potter', 'As Aventuras de Tintin', 'Magnolia']
+      filmes: [
+        {ano: 2018,titulo: 'Harry Potter', id: 1},
+        {ano: 2018,titulo: 'As Aventuras de Tintin', id: 2},
+        {ano: 2018,titulo: 'Magnolia', id: 3}
+      ]
     }
   }
 }
