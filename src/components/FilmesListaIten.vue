@@ -8,7 +8,14 @@
 <script>
 export default {
     props:{
-        filmeTitulo: String,
+        filmeTitulo: {
+            type: String,
+            required: true,
+            default: 'NÃO FOI INFORMADO UM VALOR',
+            validator(valor) {
+                return valor.includes('');
+            }
+        }
     },
     computed: {
         filmeTituloConcatenado() {
