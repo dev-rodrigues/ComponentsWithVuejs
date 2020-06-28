@@ -19,8 +19,14 @@
     <!-- coluna 2 -->
     <div class="col-4">
 
-      <FilmesListaItenInfo :filme="filmeSelecionado"/>
+      <FilmesListaItenInfo
+        v-if="!editar" 
+        :filme="filmeSelecionado"
+        @editarFilme="editarFilme"/>
 
+      <FilmesListaItenEditar 
+        v-else
+        :filme="filmeSelecionado"/>
     </div>
 
   </div>
@@ -28,13 +34,16 @@
 
 <script>
 
-import FilmesListaIten from './FilmesListaIten.vue'
-import FilmesListaItenInfo from './FilmesListaItenInfo.vue'
+import FilmesListaIten from './FilmesListaIten.vue';
+import FilmesListaItenInfo from './FilmesListaItenInfo.vue';
+import FilmesListaItenEditar from './FilmesListaItenEditar.vue';
+
 
 export default {
   components: {
     FilmesListaIten,
-    FilmesListaItenInfo
+    FilmesListaItenInfo,
+    FilmesListaItenEditar
   },
   data() {
     return {
@@ -43,7 +52,8 @@ export default {
         {autor:'Stan',ano: 2018,titulo: 'As Aventuras de Tintin', id: 2},
         {autor:'Stan',ano: 2018,titulo: 'Magnolia', id: 3}
       ],
-      filmeSelecionado: undefined
+      filmeSelecionado: undefined,
+      editar: false,
     }    
   },
   methods: {
@@ -51,6 +61,10 @@ export default {
         return {
           active: this.filmeSelecionado && this.filmeSelecionado.id === filmeIterado.id,
       }
+    },
+    editarFilme(filme) {
+      this.editar = true;
+      this.filmeSelecionado = filme;
     }
   }
 }
